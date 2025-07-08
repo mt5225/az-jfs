@@ -38,8 +38,8 @@ module "vm_sku" {
   location      = azurerm_resource_group.this_rg.location
   cache_results = true
   vm_filters = {
-    min_vcpus                      = 2
-    max_vcpus                      = 2
+    min_vcpus                      = 4
+    max_vcpus                      = 4
     encryption_at_host_supported   = true
     accelerated_networking_enabled = true
     premium_io_supported           = true
