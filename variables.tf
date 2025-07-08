@@ -1,11 +1,5 @@
-variable "resource_group_name" {
-  description = "The name of the resource group."
-  type        = string
-  default     = "rg-terraform-jfs"
+variable "enable_telemetry" {
+  description = "Enable telemetry"
+  type        = bool
+  default     = false
 }
-
-variable "location" {
-  description = "The Azure region to deploy resources."
-  type        = string
-  default     = "japaneast"
-} 
