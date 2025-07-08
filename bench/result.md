@@ -1,3 +1,9 @@
+# Setting 1
+- region = japaneast 
+- vm = Standard B4ms (4 vcpus, 16 GiB memory)
+- redis = Running - Premium 6 GB
+- azure blob
+
 ## P = 2
 ```
 root@vm-lvki:~# juicefs bench /jfs -p 2
