@@ -191,3 +191,41 @@ module "redis" {
     }
   }
 }
+
+module "storage_account" {
+  source  = "Azure/avm-res-storage-storageaccount/azurerm"
+  version = "0.6.3"
+
+  name                = module.naming.storage_account.name_unique
+  resource_group_name = azurerm_resource_group.this_rg.name
+  location            = azurerm_resource_group.this_rg.location
+
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
+  account_kind             = "StorageV2"
+
+  shared_access_key_enabled = true
+  public_network_access_enabled = true
+
+  containers = {
+    data = {
+      name            = "data"
+      public_access   = "None"
+    }
+    logs = {
+      name            = "logs"
+      public_access   = "None"
+    }
+    backups = {
+      name            = "backups"
+      public_access   = "None"
+    }
+  }
+
+  network_rules = {
+    default_action = "Allow"
+    bypass         = ["AzureServices"]
+  }
+
+  tags = local.tags
+}
